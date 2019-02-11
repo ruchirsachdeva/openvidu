@@ -94,17 +94,9 @@ public class OpenViduServer implements JsonRpcConfigurer {
     private EmbeddedWebApplicationContext appContext;
 
     public String getBaseUrl()  {
-        Connector connector = ((TomcatEmbeddedServletContainer) appContext.getEmbeddedServletContainer()).getTomcat().getConnector();
-        String scheme = connector.getScheme();
-        String ip = null;
-        try {
-            ip = InetAddress.getLocalHost().getHostAddress();
-        } catch (UnknownHostException e) {
-            ip="unknown";
-        }
-        int port = connector.getPort();
+
         String contextPath = appContext.getServletContext().getContextPath();
-        return scheme + "://" + ip + ":" + port + contextPath;
+        return contextPath;
     }
 
     @Bean
