@@ -24,9 +24,6 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
-import io.openvidu.server.rest.CertificateRestController;
-import io.openvidu.server.rest.ConfigRestController;
-import io.openvidu.server.rest.SessionRestController;
 import org.kurento.jsonrpc.JsonUtils;
 import org.kurento.jsonrpc.internal.server.config.JsonRpcConfiguration;
 import org.kurento.jsonrpc.server.JsonRpcConfigurer;
@@ -39,7 +36,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.env.Environment;
@@ -76,7 +72,6 @@ import io.openvidu.server.utils.GeoLocationByIpDummy;
  */
 @Import({ JsonRpcConfiguration.class })
 @SpringBootApplication
-@ComponentScan(basePackageClasses = {CertificateRestController.class, ConfigRestController.class, SessionRestController.class})
 public class OpenViduServer implements JsonRpcConfigurer {
 
 	private static final Logger log = LoggerFactory.getLogger(OpenViduServer.class);
