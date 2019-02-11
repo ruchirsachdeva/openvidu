@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/openvidu-client/openvidu-client.iml" filepath="$PROJECT_DIR$/openvidu-client/openvidu-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/openvidu-parent.iml" filepath="$PROJECT_DIR$/openvidu-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/openvidu-server/openvidu-server.iml" filepath="$PROJECT_DIR$/openvidu-server/openvidu-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/openvidu-test/openvidu-test.iml" filepath="$PROJECT_DIR$/openvidu-test/openvidu-test.iml" />
+    </modules>
+  </component>
+</project>
