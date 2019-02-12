@@ -171,7 +171,7 @@ public class RecordingManager {
 		}
 
 		// Clean any stranded openvidu/openvidu-recording container on startup
-		this.removeExistingRecordingContainers();
+	//	this.removeExistingRecordingContainers();
 
 		this.initRecordingPath();
 	}
@@ -447,7 +447,7 @@ public class RecordingManager {
 	private boolean recordingImageExistsLocally() {
 		boolean imageExists = false;
 		try {
-			this.composedRecordingService.dockerClient.inspectImageCmd(IMAGE_NAME + ":" + IMAGE_TAG).exec();
+			//this.composedRecordingService.dockerClient.inspectImageCmd(IMAGE_NAME + ":" + IMAGE_TAG).exec();
 			imageExists = true;
 		} catch (NotFoundException nfe) {
 			imageExists = false;
