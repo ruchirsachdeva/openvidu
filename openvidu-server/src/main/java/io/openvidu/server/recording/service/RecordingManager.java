@@ -171,7 +171,7 @@ public class RecordingManager {
 		}
 
 		// Clean any stranded openvidu/openvidu-recording container on startup
-	//	this.removeExistingRecordingContainers();
+		this.removeExistingRecordingContainers();
 
 		this.initRecordingPath();
 	}
@@ -180,12 +180,12 @@ public class RecordingManager {
 		Recording recording = null;
 		try {
 			switch (properties.outputMode()) {
-			case COMPOSED:
-				recording = this.composedRecordingService.startRecording(session, properties);
-				break;
-			case INDIVIDUAL:
-				recording = this.singleStreamRecordingService.startRecording(session, properties);
-				break;
+				case COMPOSED:
+					recording = this.composedRecordingService.startRecording(session, properties);
+					break;
+				case INDIVIDUAL:
+					recording = this.singleStreamRecordingService.startRecording(session, properties);
+					break;
 			}
 		} catch (OpenViduException e) {
 			throw e;
@@ -208,19 +208,19 @@ public class RecordingManager {
 			recording = this.sessionsRecordings.get(session.getSessionId());
 		}
 		switch (recording.getOutputMode()) {
-		case COMPOSED:
-			recording = this.composedRecordingService.stopRecording(session, recording, reason);
-			break;
-		case INDIVIDUAL:
-			recording = this.singleStreamRecordingService.stopRecording(session, recording, reason);
-			break;
+			case COMPOSED:
+				recording = this.composedRecordingService.stopRecording(session, recording, reason);
+				break;
+			case INDIVIDUAL:
+				recording = this.singleStreamRecordingService.stopRecording(session, recording, reason);
+				break;
 		}
 		this.abortAutomaticRecordingStopThread(session);
 		return recording;
 	}
 
 	public void startOneIndividualStreamRecording(Session session, String recordingId, MediaProfileSpecType profile,
-			Participant participant) {
+												  Participant participant) {
 		Recording recording = this.sessionsRecordings.get(session.getSessionId());
 		if (recording == null) {
 			log.error("Cannot start recording of new stream {}. Session {} is not being recorded",
@@ -414,14 +414,14 @@ public class RecordingManager {
 
 				String extension;
 				switch (recording.getOutputMode()) {
-				case COMPOSED:
-					extension = recording.hasVideo() ? "mp4" : "webm";
-					break;
-				case INDIVIDUAL:
-					extension = "zip";
-					break;
-				default:
-					extension = "mp4";
+					case COMPOSED:
+						extension = recording.hasVideo() ? "mp4" : "webm";
+						break;
+					case INDIVIDUAL:
+						extension = "zip";
+						break;
+					default:
+						extension = "mp4";
 				}
 
 				recording.setUrl(this.openviduConfig.getFinalUrl() + "recordings/" + recording.getId() + "/"
@@ -447,7 +447,7 @@ public class RecordingManager {
 	private boolean recordingImageExistsLocally() {
 		boolean imageExists = false;
 		try {
-			//this.composedRecordingService.dockerClient.inspectImageCmd(IMAGE_NAME + ":" + IMAGE_TAG).exec();
+			this.composedRecordingService.dockerClient.inspectImageCmd(IMAGE_NAME + ":" + IMAGE_TAG).exec();
 			imageExists = true;
 		} catch (NotFoundException nfe) {
 			imageExists = false;
